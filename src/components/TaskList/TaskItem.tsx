@@ -1,6 +1,7 @@
 import type { ChangeEvent } from "react";
 import type { TaskItemProps, TaskStatus } from "../../types";
 import { PencilSquareIcon, XMarkIcon } from "@heroicons/react/16/solid";
+import { formatDate } from "../../utils/taskUtils";
 
 function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
 
@@ -64,7 +65,7 @@ function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
                         Priority: <span className={priorityStyling()}>{task.priority.charAt(0).toUpperCase() + task.priority.slice(1).toLowerCase()}</span>
                     </div>
                     <div className="text-gray-500 dark:text-gray-400">
-                        Due: {task.dueDate}
+                        Due: {formatDate(task.dueDate)}
                     </div>
                 </div>
             </div>
