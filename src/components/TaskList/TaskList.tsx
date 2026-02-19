@@ -6,11 +6,11 @@ import { TaskFilter } from "../TaskFilter/TaskFilter";
 
 function TaskList({ tasks, onStatusChange, onDelete, onUpdate}: TaskListProps){
     
-    const [filters,setFilters] = useState({status: "", priority: ""});
+    const [filters,setFilters] = useState({status: "", priority: "", search: ""});
 
     const filteredTaskElements = tasks.filter((task) => {
         let filteredTasks = false;
-        if(task.status.includes(filters.status) && task.priority.includes(filters.priority)) {filteredTasks = true}
+        if(task.status.includes(filters.status) && task.priority.includes(filters.priority) && task.title.includes(filters.search)) {filteredTasks = true}
         return filteredTasks;
     });
 
