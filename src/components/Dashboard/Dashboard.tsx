@@ -11,7 +11,7 @@ const initialTasks : Task[] = [
         description: "Description 1",
         status: "pending",
         priority: "low",
-        dueDate: "2/19/2026"
+        dueDate: "2026-02-19"
     },
     {
         id: "002",
@@ -19,7 +19,7 @@ const initialTasks : Task[] = [
         description: "Description 2",
         status: "in-progress",
         priority: "medium",
-        dueDate: "2/15/2026"
+        dueDate: "2026-02-15"
     },
     {
         id: "003",
@@ -27,7 +27,7 @@ const initialTasks : Task[] = [
         description: "Description 3",
         status: "completed",
         priority: "high",
-        dueDate: "2/13/2026"
+        dueDate: "2026-02-13"
     }
 
 ];
@@ -36,6 +36,7 @@ function Dashboard() {
 
     const [tasks,setTasks] = useState<Task[]> (initialTasks);
     const [showForm,setShowForm] = useState<boolean> (false);
+    const [taskToUpdate,setTaskToUpdate] = useState<Task|undefined> (undefined);
 
     function handleStatusChange (taskId: string, taskStatus: TaskStatus) {
         setTasks((prev) => 
@@ -64,7 +65,21 @@ function Dashboard() {
     }
 
     function handleUpdate(task: Task) {
-        console.log(task);
+        setTasks((prev) =>
+            prev.map((t)=>{
+                return t.id === task.id ? task : t;
+            })
+        );
+        setTaskToUpdate(undefined);
+        setShowForm(!showForm);
+    }
+    
+    function showEditForm(taskId: string) {
+        const targetTask = tasks.filter((task)=>
+            task.id == taskId
+        )[0]
+        setTaskToUpdate(targetTask);
+        setShowForm(!showForm);
     }
 
     return (
@@ -73,11 +88,11 @@ function Dashboard() {
             
             {!showForm && (
                 <>
-                <button onClick={()=>setShowForm(!showForm)} className="text-blue-600 bg-blue-100 px-2 py-1 rounded float-right"><PlusCircleIcon className="size-6 text-blue-600 inline pr-1" />Add Task</button>
-                <div className="clear-right"><TaskList tasks={tasks} onStatusChange={handleStatusChange} onDelete={handleDelete} /></div>
+                <button onClick={()=>setShowForm(!showForm)} className="text-blue-600 hover:bg-blue-200 bg-blue-100 px-2 py-1 rounded float-right shadow"><PlusCircleIcon className="size-6 text-blue-600 hover:text-blue-700 inline pr-1" />Add Task</button>
+                <div className="clear-right"><TaskList tasks={tasks} onStatusChange={handleStatusChange} onDelete={handleDelete} onUpdate={showEditForm} /></div>
                 </>
             )}
-            {showForm && (<TaskForm onAdd={handleAdd} onUpdate={handleUpdate} />)}
+            {showForm && (<TaskForm task={taskToUpdate} onAdd={handleAdd} onUpdate={handleUpdate} />)}
             
         </div>
     )

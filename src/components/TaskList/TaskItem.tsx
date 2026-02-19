@@ -1,7 +1,8 @@
 import type { ChangeEvent } from "react";
 import type { TaskItemProps, TaskStatus } from "../../types";
+import { PencilSquareIcon, XMarkIcon } from "@heroicons/react/16/solid";
 
-function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps){
+function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
 
     function handleStatusChange (e: ChangeEvent<HTMLSelectElement>) {
         onStatusChange(task.id, e.target.value as TaskStatus)
@@ -50,8 +51,11 @@ function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps){
                             <option value="in-progress">In Progress</option>
                             <option value="completed">Completed</option>
                         </select>
-                        <button onClick={handleDelete} className="text-red-600">
-                            Delete
+                        <button aria-label="Edit" title="Edit" onClick={()=>onUpdate(task.id)} className="hover:bg-blue-200 bg-blue-100 rounded shadow text-blue-600 hover:text-blue-700">
+                            <PencilSquareIcon className="size-6 inline p-0.5" />
+                        </button>
+                        <button aria-label="Delete" title="Delete" onClick={handleDelete} className="hover:bg-blue-200 bg-blue-100 rounded shadow text-blue-600 hover:text-blue-700 ">
+                            <XMarkIcon className="size-6 inline p-0.5" />
                         </button>
                     </div>
                 </div>

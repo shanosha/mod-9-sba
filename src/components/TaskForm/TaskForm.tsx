@@ -19,18 +19,13 @@ const formButtonStyle = "border border-gray-300 rounded p-4 bg-blue-600 text-whi
 
 function TaskForm({task, onAdd, onUpdate}:TaskFormProps) {
 
-    const [formData,setFormData] = useState<Task> ({...initialFormData,id:uuidv4()});
+    const [formData,setFormData] = useState<Task> (task||{...initialFormData,id:uuidv4()});
 
-    const temp = () => {
-        if(task){
-            console.log(task);
-            onAdd(task);
-            onUpdate(task);
-            setFormData(formData)
-        }
+    let addItem = true;
+    if(task){
+        addItem = false;
+        console.log(task);
     }
-
-    temp();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement>) => {
         const {name,value} = e.target;
@@ -38,9 +33,16 @@ function TaskForm({task, onAdd, onUpdate}:TaskFormProps) {
     }
     const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
+
         const newTask = {...formData};
-        setFormData({...initialFormData,id:uuidv4()});
-        onAdd(newTask);
+    
+        if(addItem){
+            // setFormData({...initialFormData,id:uuidv4()});
+            onAdd(newTask);
+        }
+        else{
+            onUpdate(newTask);
+        }
     }
 
     return (
@@ -50,7 +52,7 @@ function TaskForm({task, onAdd, onUpdate}:TaskFormProps) {
                 className='flex flex-col sm:grid sm:grid-cols-[auto_1fr] sm:gap-y-2 p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-black dark:border-gray-700'
                 onSubmit={handleSubmit}
             >
-            <h2 className='text-2xl col-span-2 text-center my-4'>Add a New Task</h2>
+            <h2 className='text-2xl col-span-2 text-center my-4'>{addItem?"Add a New Task":"Update Task"}</h2>
                 
                 {/* <label className={formLabelStyle} htmlFor='id'>ID</label> */}
                 <input className={formInputStyle} type="hidden" name="id" value={formData.id} disabled />
@@ -78,7 +80,7 @@ function TaskForm({task, onAdd, onUpdate}:TaskFormProps) {
                 <label className={formLabelStyle} htmlFor='dueDate'>Due Date</label>
                 <input className={formInputStyle} type="date" name="dueDate" value={formData.dueDate} onChange={handleChange} />
                 
-                <button className={formButtonStyle} type='submit'>Add</button>
+                <button className={formButtonStyle} type='submit'>{addItem?"Add":"Update"}</button>
 
             </form>
         </div>

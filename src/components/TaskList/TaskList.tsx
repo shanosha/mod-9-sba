@@ -4,7 +4,7 @@ import type { TaskStatus } from "../../types";
 import { TaskItem } from "./TaskItem";
 import { TaskFilter } from "../TaskFilter/TaskFilter";
 
-function TaskList({ tasks, onStatusChange, onDelete }: TaskListProps){
+function TaskList({ tasks, onStatusChange, onDelete, onUpdate}: TaskListProps){
     
     const [filters,setFilters] = useState({status: "", priority: ""});
 
@@ -20,10 +20,16 @@ function TaskList({ tasks, onStatusChange, onDelete }: TaskListProps){
             task={task}
             onStatusChange={handleStatusChange}
             onDelete={handleDelete}
-        />);
+            onUpdate={handleUpdate}
+        />
+    );
 
     function handleStatusChange (taskId: string, taskStatus: TaskStatus): void {
         onStatusChange(taskId,taskStatus);
+    }
+
+    function handleUpdate (taskId: string): void {
+        onUpdate(taskId);
     }
 
     function handleDelete (taskId: string): void {
