@@ -34,3 +34,12 @@ export interface TaskFilterProps {
     priority?: 'low' | 'medium' | 'high';
   }) => void;
 }
+
+
+
+// TaskForm
+export interface TaskFormProps {
+  task?: Task,
+  onAdd: (task: Task) => void;
+  onUpdate: (task: Task) => void;
+}
