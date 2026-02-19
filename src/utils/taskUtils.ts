@@ -6,3 +6,16 @@ export const formatDate = (dateString: string): string => {
         day: '2-digit' 
     });
 }
+
+export const loadData = () => {
+    try {
+        const storedValue = localStorage.getItem("tasks");
+        if (storedValue === null) {
+            return null;
+        }
+        return JSON.parse(storedValue);
+    } catch (error) {
+        console.warn(`Could not get or parse item "tasks" from localStorage:`, error);
+        return null;
+    }
+}

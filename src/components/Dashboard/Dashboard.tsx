@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Task, TaskStatus } from "../../types";
 import { TaskList } from "../TaskList/TaskList";
 import { TaskForm } from "../TaskForm/TaskForm";
 import { PlusCircleIcon } from "@heroicons/react/16/solid";
+import { loadData } from "../../utils/taskUtils";
+
+const storedTasks = loadData();
 
 const initialTasks : Task[] = [
     {
@@ -34,9 +37,13 @@ const initialTasks : Task[] = [
 
 function Dashboard() {
 
-    const [tasks,setTasks] = useState<Task[]> (initialTasks);
+    const [tasks,setTasks] = useState<Task[]> (storedTasks || initialTasks);
     const [showForm,setShowForm] = useState<boolean> (false);
     const [taskToUpdate,setTaskToUpdate] = useState<Task|undefined> (undefined);
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
 
     function handleStatusChange (taskId: string, taskStatus: TaskStatus) {
         setTasks((prev) => 
@@ -56,7 +63,7 @@ function Dashboard() {
             prev.filter((task) =>
                 task.id !== taskId
             )
-        )
+        );
     }
 
     function handleAdd(task: Task) {
