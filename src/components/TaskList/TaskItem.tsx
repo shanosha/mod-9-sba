@@ -41,6 +41,7 @@ function TaskItem({ task, onStatusChange, onDelete }: TaskItemProps){
                     </div>
                     <div className="flex gap-2">
                         <select
+                            name="itemStatus"
                             defaultValue={task.status}
                             onChange={(e)=>handleStatusChange(e)}
                             className={`px-2 py-1 rounded bg-white sm:mx-2 sm:border-none border border-gray-300 sm:mt-0 mt-2 ${statusStyling()}`}
