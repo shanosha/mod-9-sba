@@ -4,6 +4,7 @@ import { TaskList } from "../TaskList/TaskList";
 import { TaskForm } from "../TaskForm/TaskForm";
 import { PlusCircleIcon } from "@heroicons/react/16/solid";
 import { loadData } from "../../utils/taskUtils";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const storedTasks = loadData();
 
@@ -91,6 +92,7 @@ function Dashboard() {
 
     return (
         <div className='m-8'>
+            <ThemeToggle />
             <h1 className='text-3xl my-4'>Task Manager</h1>
             
             {!showForm && (
