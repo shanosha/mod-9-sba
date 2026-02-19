@@ -30,13 +30,13 @@ function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
 
     return (
         <>
-            <div className="p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-black dark:border-gray-700">
+            <div className="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-black dark:border-gray-700">
                 <div className="flex justify-between items-start flex-col sm:flex-row">
                     <div>
                         <h3 className="text-lg font-semibold">
                             {task.title}
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 dark:text-gray-400">
                             {task.description}
                         </p>
                     </div>
@@ -45,7 +45,7 @@ function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
                             name="itemStatus"
                             defaultValue={task.status}
                             onChange={(e)=>handleStatusChange(e)}
-                            className={`px-2 py-1 rounded bg-white sm:mx-2 sm:border-none border border-gray-300 sm:mt-0 mt-2 ${statusStyling()}`}
+                            className={`shadow px-2 py-1 rounded bg-white dark:bg-blue-100 sm:mx-2 sm:border-none border border-gray-300 sm:mt-0 mt-2 ${statusStyling()}`}
                         >
                             <option value="pending">Pending</option>
                             <option value="in-progress">In Progress</option>
@@ -60,10 +60,10 @@ function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
                     </div>
                 </div>
                 <div className="mt-2 flex gap-4 text-sm">
-                    <div className={priorityStyling()}>
-                        Priority: {task.priority}
+                    <div>
+                        Priority: <span className={priorityStyling()}>{task.priority.charAt(0).toUpperCase() + task.priority.slice(1).toLowerCase()}</span>
                     </div>
-                    <div className="text-gray-500">
+                    <div className="text-gray-500 dark:text-gray-400">
                         Due: {task.dueDate}
                     </div>
                 </div>

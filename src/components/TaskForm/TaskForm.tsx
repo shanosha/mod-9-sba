@@ -1,8 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import type { Task, TaskFormProps } from "../../types"
 import { useState } from 'react';
-
-
+import { PlusCircleIcon } from '@heroicons/react/16/solid';
 
 const initialFormData: Task = {
     id: "",
@@ -13,9 +12,9 @@ const initialFormData: Task = {
     dueDate: ""
 }
 
-const formLabelStyle = "text-gray-900 rounded mt-2 sm:p-2 sm:text-right font-semibold";
+const formLabelStyle = "dark:text-white text-gray-900 rounded mt-2 sm:p-2 sm:text-right font-semibold";
 const formInputStyle = "border border-gray-300 rounded p-2";
-const formButtonStyle = "border border-gray-300 rounded p-4 bg-blue-600 text-white mt-2 col-span-2";
+const formButtonStyle = "shadow hover:shadow-md rounded p-4 hover:bg-blue-200 bg-blue-100 hover:text-blue-700 text-blue-600 mt-2 col-span-2";
 
 function TaskForm({task, onAdd, onUpdate}:TaskFormProps) {
 
@@ -49,7 +48,7 @@ function TaskForm({task, onAdd, onUpdate}:TaskFormProps) {
         <>
         <div>
             <form
-                className='flex flex-col sm:grid sm:grid-cols-[auto_1fr] sm:gap-y-2 p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-black dark:border-gray-700'
+                className='flex flex-col sm:grid sm:grid-cols-[auto_1fr] sm:gap-y-2 p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-black dark:border-gray-700'
                 onSubmit={handleSubmit}
             >
             <h2 className='text-2xl col-span-2 text-center my-4'>{addItem?"Add a New Task":"Update Task"}</h2>
@@ -80,7 +79,7 @@ function TaskForm({task, onAdd, onUpdate}:TaskFormProps) {
                 <label className={formLabelStyle} htmlFor='dueDate'>Due Date</label>
                 <input className={formInputStyle} type="date" name="dueDate" value={formData.dueDate} onChange={handleChange} />
                 
-                <button className={formButtonStyle} type='submit'>{addItem?"Add":"Update"}</button>
+                <button className={formButtonStyle} type='submit'><PlusCircleIcon className="size-6 text-blue-600 hover:text-blue-700 inline pr-1" />{addItem?"Add":"Update"}</button>
 
             </form>
         </div>
