@@ -17,9 +17,9 @@ function ThemeToggle() {
         aria-label='Toggle Light and Dark Mode'
         title='Toggle Light and Dark Mode'
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+        className="group p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
     >
-        {theme === 'dark' ? '🌙' : '☀️'}
+        {theme === 'dark' ? (<>🌙 <span className='hidden group-hover:inline'>Dark Mode</span></>) : <>☀️ <span className='hidden group-hover:inline'>Light Mode</span></>}
     </button>
   );
 };
