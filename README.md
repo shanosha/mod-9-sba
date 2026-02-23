@@ -22,7 +22,7 @@ Work In Progress
 
 - [x] Implement filtering by status and priority
 - [x] Add search functionality
-- [ ] Show active filter indicators
+- [x] Show active filter indicators
 
 ## Dashboard Component:
 

@@ -36,6 +36,11 @@ export interface TaskFilterProps {
     priority?: 'low' | 'medium' | 'high';
     search?: string;
   }) => void;
+  filters?: {
+    status: string;
+    priority: string;
+    search: string;
+  };
 }
 
 
