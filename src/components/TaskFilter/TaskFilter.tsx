@@ -39,8 +39,8 @@ function TaskFilter({ onFilterChange, filters = { status: "", priority: "", sear
                     <option value="high">High</option>
                 </select>
             </div>
-            <div id="filters" className="space-y-2">
-                <p className="text-sm font-medium text-gray-700 dark:text-white">Active Filters:</p>
+            <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">Active Filters:</label>
                 {activeFilters.length > 0 ? (
                     <ul className="flex flex-wrap gap-2">
                         {activeFilters.map(({ key, value }) => (
