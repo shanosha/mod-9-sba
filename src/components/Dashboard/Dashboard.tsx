@@ -97,7 +97,7 @@ function Dashboard() {
             
             {!showForm && (
                 <>
-                <button onClick={()=>setShowForm(!showForm)} className="text-blue-600 hover:bg-blue-200 bg-blue-100 px-2 py-1 rounded float-right shadow"><PlusCircleIcon className="size-6 text-blue-600 hover:text-blue-700 inline pr-1" />Add Task</button>
+                <button onClick={()=>setShowForm(!showForm)} className="cursor-pointer text-blue-600 hover:bg-blue-200 bg-blue-100 px-2 py-1 rounded float-right shadow"><PlusCircleIcon className="size-6 text-blue-600 hover:text-blue-700 inline pr-1" />Add Task</button>
                 <div className="clear-right"><TaskList tasks={tasks} onStatusChange={handleStatusChange} onDelete={handleDelete} onUpdate={showEditForm} /></div>
                 </>
             )}
