@@ -6,7 +6,7 @@ import { TaskFilter } from "../TaskFilter/TaskFilter";
 
 function TaskList({ tasks, onStatusChange, onDelete, onUpdate}: TaskListProps){
     
-    const [filters,setFilters] = useState({status: "", priority: "", search: ""});
+    const [filters,setFilters] = useState({search: "", status: "", priority: ""});
 
     const filteredTaskElements = tasks.filter((task) => {
         let filteredTasks = false;
