@@ -9,7 +9,7 @@ Work In Progress
 - [x] Implement task addition
 - [x] Implement task deletion
 - [ ] Add sorting functionality
-- [ ] Add a search bar to search for tasks
+- [x] Add a search bar to search for tasks
 
 ## TaskForm Component:
 
