@@ -8,7 +8,7 @@ function TaskFilter({ onFilterChange }: TaskFilterProps) {
     }
     
     return (
-        <div className="flex flex-wrap gap-4 p-4">
+        <>
             <div>
                 <label htmlFor="status" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Status
@@ -31,13 +31,7 @@ function TaskFilter({ onFilterChange }: TaskFilterProps) {
                     <option value="high">High</option>
                 </select>
             </div>
-            <div>
-                <label htmlFor="search" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
-                    Search For A Word
-                </label>
-                <input name="search" id="search" type="text" onChange={handleChange} className="bg-white dark:bg-gray-800 px-2 py-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
-            </div>
-        </div>
+        </>
     )
 }
 

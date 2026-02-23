@@ -44,7 +44,15 @@ function TaskList({ tasks, onStatusChange, onDelete, onUpdate}: TaskListProps){
 
     return (
         <div className="space-y-4">
-            <TaskFilter onFilterChange={handleFilterChange} />
+            <div className="flex flex-wrap gap-4 p-4">
+                <div>
+                    <label htmlFor="search" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
+                        Search For A Word
+                    </label>
+                    <input name="search" id="search" type="text" onChange={(e)=>handleFilterChange({search: e.target.value})} className="bg-white dark:bg-gray-800 px-2 py-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                </div>
+                <TaskFilter onFilterChange={handleFilterChange} />
+            </div>
             <div className="space-y-4">
                 {taskElements}
             </div>
