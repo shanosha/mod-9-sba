@@ -41,7 +41,7 @@ function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
                             {task.description}
                         </p>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 items-end">
                         <select
                             name="itemStatus"
                             defaultValue={task.status}
@@ -52,10 +52,10 @@ function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
                             <option value="in-progress">In Progress</option>
                             <option value="completed">Completed</option>
                         </select>
-                        <button aria-label="Edit" title="Edit" onClick={()=>onUpdate(task.id)} className="hover:bg-blue-200 bg-blue-100 rounded shadow text-blue-600 hover:text-blue-700">
+                        <button aria-label="Edit" title="Edit" onClick={()=>onUpdate(task.id)} className="h-8 border border-gray-200 hover:bg-blue-200 bg-blue-100 rounded shadow text-blue-600 hover:text-blue-700">
                             <PencilSquareIcon className="size-6 inline p-0.5" />
                         </button>
-                        <button aria-label="Delete" title="Delete" onClick={handleDelete} className="hover:bg-blue-200 bg-blue-100 rounded shadow text-blue-600 hover:text-blue-700 ">
+                        <button aria-label="Delete" title="Delete" onClick={handleDelete} className="h-8 border border-gray-200 hover:bg-blue-200 bg-blue-100 rounded shadow text-blue-600 hover:text-blue-700 ">
                             <XMarkIcon className="size-6 inline p-0.5" />
                         </button>
                     </div>
