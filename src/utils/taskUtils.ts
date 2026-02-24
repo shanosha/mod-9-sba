@@ -37,3 +37,15 @@ export const filterTasks = (tasks:Task[],filters:{status:string,priority:string,
         return filteredTasks;
     });
 }
+
+export const sortTasks = (tasks:Task[],sort:string):Task[] => {
+    if(sort == "title-asc"){
+        return [...tasks].sort((a, b) => a.title.localeCompare(b.title));
+    }
+    if(sort == "title-desc"){
+        return [...tasks].sort((a, b) => b.title.localeCompare(a.title));
+    }
+    else{
+        return tasks;
+    }
+}

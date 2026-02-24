@@ -8,7 +8,7 @@ Work In Progress
 - [x] Handle task status updates
 - [x] Implement task addition
 - [x] Implement task deletion
-- [ ] Add sorting functionality
+- [x] Add sorting functionality
 - [x] Add a search bar to search for tasks
 
 ## TaskForm Component:
@@ -34,7 +34,7 @@ Work In Progress
 ## Utility Functions
 
 - [x] Implement task filtering logic
-- [ ] Add sorting functions
+- [x] Add sorting functions
 - [ ] Create validation helpers
 - [x] Add date formatting utilities
 
@@ -51,6 +51,8 @@ Work In Progress
 - [x] Add a toggle switch to the UI for changing the theme
 - [x] Pass the theme state down to the components that need it
 - [ ] Add animations and/or transitions for state changes
+
+---------------------------------
 
 # Testing and Finalizing
 
