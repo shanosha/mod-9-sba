@@ -108,9 +108,9 @@ function Dashboard() {
                     
                 </div>
             </main>
-            <div className="fixed bottom-0 left-0 w-full dark:bg-gray-800 bg-blue-50 text-gray-600 p-4 text-sm text-center border-t border-gray-200 shadow-[inset_1px_5px_10px_-5px_#DDDDDD]">
+            <footer className="fixed bottom-0 left-0 w-full dark:bg-gray-800 bg-blue-50 dark:text-inherit text-gray-600 p-4 text-sm text-center border-t dark:border-gray-700 border-gray-200 dark:shadow-[inset_1px_5px_10px_-5px_#000000] shadow-[inset_1px_5px_10px_-5px_#DDDDDD]">
                 <TaskStatistics tasks={tasks} />
-            </div>
+            </footer>
         </>
     )
 
