@@ -5,6 +5,7 @@ import { TaskForm } from "../TaskForm/TaskForm";
 import { PlusCircleIcon } from "@heroicons/react/16/solid";
 import { loadData } from "../../utils/taskUtils";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import TaskStatistics from "./TaskStatistics";
 
 const storedTasks = loadData();
 
@@ -91,19 +92,26 @@ function Dashboard() {
     }
 
     return (
-        <div className='m-8'>
-            <ThemeToggle />
-            <h1 className='text-3xl my-4'>Task Manager</h1>
-            
-            {!showForm && (
-                <>
-                <button onClick={()=>setShowForm(!showForm)} className="cursor-pointer text-blue-600 hover:bg-blue-200 bg-blue-100 px-2 py-1 rounded float-right shadow"><PlusCircleIcon className="size-6 text-blue-600 hover:text-blue-700 inline pr-1" />Add Task</button>
-                <div className="clear-right"><TaskList tasks={tasks} onStatusChange={handleStatusChange} onDelete={handleDelete} onUpdate={showEditForm} /></div>
-                </>
-            )}
-            {showForm && (<TaskForm task={taskToUpdate} onAdd={handleAdd} onUpdate={handleUpdate} />)}
-            
-        </div>
+        <>
+            <main className="mb-30">
+                <div className='m-8'>
+                    <ThemeToggle />
+                    <h1 className='text-3xl my-4'>Task Manager</h1>
+                    
+                    {!showForm && (
+                        <>
+                        <button onClick={()=>setShowForm(!showForm)} className="cursor-pointer text-blue-600 hover:bg-blue-200 bg-blue-100 px-2 py-1 rounded float-right shadow"><PlusCircleIcon className="size-6 text-blue-600 hover:text-blue-700 inline pr-1" />Add Task</button>
+                        <div className="clear-right"><TaskList tasks={tasks} onStatusChange={handleStatusChange} onDelete={handleDelete} onUpdate={showEditForm} /></div>
+                        </>
+                    )}
+                    {showForm && (<TaskForm task={taskToUpdate} onAdd={handleAdd} onUpdate={handleUpdate} />)}
+                    
+                </div>
+            </main>
+            <div className="fixed bottom-0 left-0 w-full dark:bg-gray-800 bg-blue-50 text-gray-600 p-4 text-sm text-center border-t border-gray-200 shadow-[inset_1px_5px_10px_-5px_#DDDDDD]">
+                <TaskStatistics tasks={tasks} />
+            </div>
+        </>
     )
 
 }

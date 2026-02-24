@@ -1,3 +1,5 @@
+import type { Task } from "../types";
+
 export const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
@@ -18,4 +20,12 @@ export const loadData = () => {
         console.warn(`Could not get or parse item "tasks" from localStorage:`, error);
         return null;
     }
+}
+
+export const calculateTaskStats = (tasks:Task[]) => {
+    const total = tasks.length
+    const pending = tasks.filter((t)=>t.status == "pending").length
+    const inProgress = tasks.filter((t)=>t.status == "in-progress").length
+    const completed = tasks.filter((t)=>t.status == "completed").length
+    return [total,pending,inProgress,completed];
 }

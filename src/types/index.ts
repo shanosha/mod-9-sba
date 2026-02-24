@@ -51,3 +51,11 @@ export interface TaskFormProps {
   onAdd: (task: Task) => void;
   onUpdate: (task: Task) => void;
 }
+
+
+
+
+
+export interface TaskStatisticsProps {
+  tasks:Task[]
+}
