@@ -96,7 +96,7 @@ function Dashboard() {
             <main className="mb-30">
                 <div className='m-8'>
                     <ThemeToggle />
-                    <h1 className='text-3xl my-4'>Task Manager</h1>
+                    <h1 className='text-3xl my-4'>Task Dashboard</h1>
                     
                     {!showForm && (
                         <>
