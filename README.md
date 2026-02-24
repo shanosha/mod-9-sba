@@ -28,7 +28,7 @@ Work In Progress
 
 - [x] Compose all components into a cohesive dashboard
 - [x] Implement responsive layout
-- [ ] Add task statistics
+- [x] Add task statistics
 - [x] Handle component communication
 
 ## Utility Functions
