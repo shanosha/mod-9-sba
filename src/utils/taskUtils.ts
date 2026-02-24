@@ -29,3 +29,11 @@ export const calculateTaskStats = (tasks:Task[]) => {
     const completed = tasks.filter((t)=>t.status == "completed").length
     return [total,pending,inProgress,completed];
 }
+
+export const filterTasks = (tasks:Task[],filters:{status:string,priority:string,search:string}) => {
+    return tasks.filter((task) => {
+        let filteredTasks = false;
+        if(task.status.includes(filters.status) && task.priority.includes(filters.priority) && task.title.includes(filters.search)) {filteredTasks = true}
+        return filteredTasks;
+    });
+}

@@ -34,7 +34,7 @@ Work In Progress
 ## Utility Functions
 
 - [ ] Implement task filtering logic
-- [ ] Add sorting functions
+- [x] Add sorting functions
 - [ ] Create validation helpers
 - [x] Add date formatting utilities
 

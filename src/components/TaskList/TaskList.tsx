@@ -3,16 +3,13 @@ import type { TaskListProps } from "../../types";
 import type { TaskStatus } from "../../types";
 import { TaskItem } from "./TaskItem";
 import { TaskFilter } from "../TaskFilter/TaskFilter";
+import { filterTasks } from "../../utils/taskUtils";
 
 function TaskList({ tasks, onStatusChange, onDelete, onUpdate}: TaskListProps){
     
     const [filters,setFilters] = useState({search: "", status: "", priority: ""});
 
-    const filteredTaskElements = tasks.filter((task) => {
-        let filteredTasks = false;
-        if(task.status.includes(filters.status) && task.priority.includes(filters.priority) && task.title.includes(filters.search)) {filteredTasks = true}
-        return filteredTasks;
-    });
+    const filteredTaskElements = filterTasks(tasks,filters);
 
     const taskElements = filteredTaskElements.map((task) =>
         <TaskItem
