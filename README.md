@@ -33,8 +33,8 @@ Work In Progress
 
 ## Utility Functions
 
-- [ ] Implement task filtering logic
-- [x] Add sorting functions
+- [x] Implement task filtering logic
+- [ ] Add sorting functions
 - [ ] Create validation helpers
 - [x] Add date formatting utilities
 
