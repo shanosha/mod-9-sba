@@ -14,9 +14,9 @@ Work In Progress
 ## TaskForm Component:
 
 - [x] Create a controlled form for adding/editing tasks
-- [ ] Implement form validation
+- [x] Implement form validation
 - [x] Handle form submission
-- [ ] Show validation feedback
+- [x] Show validation feedback
 
 ## TaskFilter Component:
 
@@ -35,7 +35,7 @@ Work In Progress
 
 - [x] Implement task filtering logic
 - [x] Add sorting functions
-- [ ] Create validation helpers
+- [x] Create validation helpers
 - [x] Add date formatting utilities
 
 ## Data Persistence
@@ -50,7 +50,7 @@ Work In Progress
 - [x] Add support for both light and dark mode
 - [x] Add a toggle switch to the UI for changing the theme
 - [x] Pass the theme state down to the components that need it
-- [ ] Add animations and/or transitions for state changes
+- [x] Add animations and/or transitions for state changes
 
 ---------------------------------
 
@@ -58,16 +58,16 @@ Work In Progress
 
 ## Test Your Application:
 
-- [ ] Test all form validations
-- [ ] Verify filtering and sorting functionality
-- [ ] Check responsive design
-- [ ] Test component interactions
+- [x] Test all form validations
+- [x] Verify filtering and sorting functionality
+- [x] Check responsive design
+- [x] Test component interactions
 
 ## Code Review:
 
 - [ ] Ensure TypeScript types are properly implemented
 - [ ] Check for proper component composition
-- [ ] Verify state management approach
+- [x] Verify state management approach
 - [ ] Review error handling
 
 ## Documentation:
