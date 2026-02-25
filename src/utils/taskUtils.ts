@@ -49,3 +49,7 @@ export const sortTasks = (tasks:Task[],sort:string):Task[] => {
         return tasks;
     }
 }
+
+export const fieldInvalid = (fieldValue: string) => {
+    return fieldValue.trim() == "";
+}

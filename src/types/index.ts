@@ -52,10 +52,16 @@ export interface TaskFormProps {
   onUpdate: (task: Task) => void;
 }
 
+export interface FormErrors {
+  title: string;
+  description: string;
+  dueDate: string;
+}
 
 
 
 
+// TaskStatistics
 export interface TaskStatisticsProps {
   tasks:Task[]
 }
