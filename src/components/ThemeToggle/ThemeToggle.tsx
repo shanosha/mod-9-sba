@@ -22,7 +22,7 @@ function ThemeToggle() {
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         className="cursor-pointer group p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
     >
-        {theme === 'dark' ? (<>🌙 <span className='hidden group-hover:inline'>Dark Mode</span></>) : <>☀️ <span className='hidden group-hover:inline'>Light Mode</span></>}
+        {theme === 'dark' ? (<>🌙 <span className='sm:hidden sm:group-hover:inline'>Dark Mode</span></>) : <>☀️ <span className='sm:hidden sm:group-hover:inline'>Light Mode</span></>}
     </button>
   );
 };
