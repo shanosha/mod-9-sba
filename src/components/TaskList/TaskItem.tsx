@@ -3,16 +3,21 @@ import type { TaskItemProps, TaskStatus } from "../../types";
 import { PencilSquareIcon, XMarkIcon } from "@heroicons/react/16/solid";
 import { formatDate } from "../../utils/taskUtils";
 
+
+// Component to display indiviual tasks.
 function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
 
+    // On task status change, uses callback function to update a task status.
     function handleStatusChange (e: ChangeEvent<HTMLSelectElement>) {
         onStatusChange(task.id, e.target.value as TaskStatus)
     }
 
+    // On click of taks delet button, uses callback function to delete a task.
     function handleDelete () {
         onDelete(task.id)
     }
 
+    // Changes task status dropdown styling, based on task status.
     const statusStyling = (): string => {
         let str = "";
         if(task.status == "pending") {str="bg-yellow-100 text-yellow-800"}
@@ -21,6 +26,7 @@ function TaskItem({ task, onStatusChange, onDelete, onUpdate }: TaskItemProps){
         return str;
     }
 
+    // Changes task priority styling, based on task priority.
     const priorityStyling = (): string => {
         let str = "";
         if(task.priority == "low") {str="text-green-600"}

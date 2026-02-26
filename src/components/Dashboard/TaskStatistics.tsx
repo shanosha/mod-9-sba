@@ -1,6 +1,7 @@
 import type { TaskStatisticsProps } from "../../types"
 import { calculateTaskStats } from "../../utils/taskUtils"
 
+// Task statistics component, which displays statistics about the array of tasks.
 function TaskStatistics({tasks}:TaskStatisticsProps){
 
     const [total,pending,inProgress,completed] = calculateTaskStats(tasks)

@@ -1,7 +1,9 @@
 import type { TaskFilterProps } from "../../types"
 
+// Component that displays dropdown options for selecting filter options, and the current active filters or searches.
 function TaskFilter({ onFilterChange, filters = { status: "", priority: "", search: "" } }: TaskFilterProps) {
 
+    // Function that's called when a dropdown list value is changed, that uses a callback function to pass the filters to the parent component.
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement|HTMLInputElement>) => {
         const { name, value } = event.target;
         onFilterChange({[name]: value});

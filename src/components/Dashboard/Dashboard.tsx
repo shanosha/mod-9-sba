@@ -7,8 +7,10 @@ import { loadData } from "../../utils/taskUtils";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import TaskStatistics from "./TaskStatistics";
 
+// Load stored tasks to a variable only on page load.
 const storedTasks = loadData();
 
+// Load mock data to a vriable, to be used if data is not present in local storage.
 const initialTasks : Task[] = [
     {
         id: "001",
@@ -37,6 +39,7 @@ const initialTasks : Task[] = [
 
 ];
 
+// Task Dashboard component which holds multiple components related to task management.
 function Dashboard() {
 
     const [tasks,setTasks] = useState<Task[]> (storedTasks || initialTasks);
@@ -47,6 +50,7 @@ function Dashboard() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }, [tasks]);
 
+    // Function that updates the tasks state variable when an individual task status changes.
     function handleStatusChange (taskId: string, taskStatus: TaskStatus) {
         setTasks((prev) => 
             prev.map((task) => {
@@ -60,6 +64,7 @@ function Dashboard() {
         );
     }
 
+    // Function that deletes an individual task from the tasks array state variable, when a delete button is clicked.
     function handleDelete (taskId: string) {
         setTasks((prev) =>
             prev.filter((task) =>
@@ -68,11 +73,13 @@ function Dashboard() {
         );
     }
 
+    // Funtion to add a new task to the tasks array, and hide the form after a new task has been added.
     function handleAdd(task: Task) {
         setTasks((prev) =>[...prev,task]);
         setShowForm(!showForm)
     }
 
+    // Funtion to update an existing task in the tasks array, and hide the form after an existing task has been updated.
     function handleUpdate(task: Task) {
         setTasks((prev) =>
             prev.map((t)=>{
@@ -83,6 +90,7 @@ function Dashboard() {
         setShowForm(!showForm);
     }
     
+    // Function to show a task update form, for a specific task, after the edit button has been clicked.
     function showEditForm(taskId: string) {
         const targetTask = tasks.filter((task)=>
             task.id == taskId

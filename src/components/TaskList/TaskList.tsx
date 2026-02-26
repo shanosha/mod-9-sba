@@ -5,15 +5,19 @@ import { TaskItem } from "./TaskItem";
 import { TaskFilter } from "../TaskFilter/TaskFilter";
 import { filterTasks, sortTasks } from "../../utils/taskUtils";
 
+// Component that displays a list of tasks.
 function TaskList({ tasks, onStatusChange, onDelete, onUpdate}: TaskListProps){
     
     const [filters,setFilters] = useState({search: "", status: "", priority: ""});
     const [sort,setSort] = useState("");
 
+    // Variable that uses a function to sort the list of tasks based on the sort dropdown controlled by the "sort" state variable.
     const sortedTasks = sortTasks(tasks,sort);
 
+    // Variable that uses a function to filter the list of tasks based on the filter dropdowns controlled by the "filters" state variable.
     const filteredTasks = filterTasks(sortedTasks,filters);
-
+    
+    // Variable that takes the list of tasks (after they have been sorted and filtered), and converts to array to a list of elements with unique keys assigned.
     const taskElements = filteredTasks.map((task) =>
         <TaskItem
             key={task.id}
@@ -24,24 +28,29 @@ function TaskList({ tasks, onStatusChange, onDelete, onUpdate}: TaskListProps){
         />
     );
 
+    // Callback function assigned to TaksItem components. Parent component updates a task status.
     function handleStatusChange (taskId: string, taskStatus: TaskStatus): void {
         onStatusChange(taskId,taskStatus);
     }
 
+    // Callback function assigned to TaksItem components. Parent component updates a task details.
     function handleUpdate (taskId: string): void {
         onUpdate(taskId);
     }
 
+    // Callback function assigned to TaksItem components. Parent component deletes a task.
     function handleDelete (taskId: string): void {
         onDelete(taskId);
     }
 
+    // Callback function assigned to the TaksFilter component. Updates the "filters" state variable.
     function handleFilterChange(changedFilter: object): void {
         Object.entries(changedFilter).forEach(([key, value]) => {
             setFilters({...filters, [key]: value});
         });
     }
 
+    // Function assigned to the sort dropdown. Updates the "sort" state variable.
     function handleSortChange(e: React.ChangeEvent<HTMLSelectElement>): void {
         const value = e.target.value;
         setSort(value);

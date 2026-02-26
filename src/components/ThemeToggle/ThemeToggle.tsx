@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 
+// Component to toggle a theme class in the body tag on click.
 function ThemeToggle() {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
+  
+  // Toggles the "dark" class in the body tag when the "theme" state variable updates.
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');

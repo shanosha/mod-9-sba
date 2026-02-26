@@ -1,5 +1,6 @@
 import type { Task } from "../types";
 
+// Reformat the date submitted in a form for display.
 export const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
@@ -9,6 +10,7 @@ export const formatDate = (dateString: string): string => {
     });
 }
 
+// Load task data from local storage.
 export const loadData = () => {
     try {
         const storedValue = localStorage.getItem("tasks");
@@ -22,6 +24,7 @@ export const loadData = () => {
     }
 }
 
+// Calculate task statistics, based on an array of tasks.
 export const calculateTaskStats = (tasks:Task[]) => {
     const total = tasks.length
     const pending = tasks.filter((t)=>t.status == "pending").length
@@ -30,6 +33,7 @@ export const calculateTaskStats = (tasks:Task[]) => {
     return [total,pending,inProgress,completed];
 }
 
+// Filter an array of tasks, based on a filters object.
 export const filterTasks = (tasks:Task[],filters:{status:string,priority:string,search:string}) => {
     return tasks.filter((task) => {
         let filteredTasks = false;
@@ -38,6 +42,7 @@ export const filterTasks = (tasks:Task[],filters:{status:string,priority:string,
     });
 }
 
+// Sort an array of tasks, based on a sort string.
 export const sortTasks = (tasks:Task[],sort:string):Task[] => {
     if(sort == "title-asc"){
         return [...tasks].sort((a, b) => a.title.localeCompare(b.title));
@@ -50,6 +55,7 @@ export const sortTasks = (tasks:Task[],sort:string):Task[] => {
     }
 }
 
+// Check if a form field is invalid.
 export const fieldInvalid = (fieldValue: string) => {
     return fieldValue.trim() == "";
 }

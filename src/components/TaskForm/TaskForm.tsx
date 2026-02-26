@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { PlusCircleIcon } from '@heroicons/react/16/solid';
 import { fieldInvalid } from '../../utils/taskUtils';
 
+// Initial form data, used unless a specific task has been specified in the props.
 const initialFormData: Task = {
     id: "",
     title: "",
@@ -18,21 +19,25 @@ const formInputStyle = "border border-gray-300 rounded p-2";
 const formButtonStyle = "shadow hover:shadow-md rounded p-4 hover:bg-blue-200 bg-blue-100 hover:text-blue-700 text-blue-600 mt-2 col-span-2";
 const errorStyle = "col-span-2 text-center text-red-600 text-sm mb-1"
 
+// Component that shows a form. The Form adds a new task, or updates an existing task if task data has been supplied in the props.
 function TaskForm({task, onAdd, onUpdate}:TaskFormProps) {
 
     const [formData,setFormData] = useState<Task> (task||{...initialFormData,id:uuidv4()});
     const [errors,setErrors] = useState<FormErrors>({ title: "", description: "", dueDate: ""});
 
+    // Checks for task dat in props, if none the form will add new task. If a specific task is provided, the form will update that task.
     let addItem = true;
     if(task){
         addItem = false;
     }
 
+    // Updates the formData stat variable as form fields are changed.
     const handleChange = (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement>) => {
         const {name,value} = e.target;
         setFormData({...formData,[name]:value})
     }
 
+    // Handles form submition and checks the validity of form fields.
     const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         let errorsFound = false;
